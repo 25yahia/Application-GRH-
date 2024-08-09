@@ -1,0 +1,155 @@
+<div #pdfContent>
+  <!-- Header -->
+  <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+    style="min-height: 600px; background-size: cover; background-position: center top; background-color: blue !important; background-image: url(assets/img/theme/profile-cover.jpg);">
+    <span class="mask bg-gradient-danger opacity-8"></span>
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-7 col-md-10">
+          <h1 class="display-2 text-white"></h1>
+          <p class="text-white mt-0 mb-5"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Mon compte</h3>
+              </div>
+              <div class="col-4 text-right">
+                <a [routerLink]="['/consultercandidat']" class="btn btn-sm btn-primary">Retour</a>
+                <button type="button" class="btn btn-sm btn-success ml-2" (click)="exportPDF()">Exporter</button>
+              </div>
+              
+            </div>
+          </div>
+          <div class="card-body">
+            <form>
+              <!-- User information -->
+              <h6 class="heading-small text-muted mb-4">Informations </h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <!-- Id -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Id</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.id }}</span>
+                    </div>
+                  </div>
+                  <!-- Nom -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Nom</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.nomCandidat }}</span>
+                    </div>
+                  </div>
+                  <!-- Prenom -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Prenom</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.prenomCandidat }}</span>
+                    </div>
+                  </div>
+                  <!-- Date naissance -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Date naissance</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.dateNaissanceCandidat }}</span>
+                    </div>
+                  </div>
+                  <!-- Numero -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Numero</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.numeroTelephoneCandidat }}</span>
+                    </div>
+                  </div>
+                  <!-- Email -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Email</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.emailCandidat }}</span>
+                    </div>
+                  </div>
+                  <!-- Adresse -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Adresse</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.adresseCandidat }}</span>
+                    </div>
+                  </div>
+                  <!-- CV -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label">CV</label>
+                        <span id="input-cv" class="form-control form-control-alternative">cv.pdf</span>
+                    </div>
+                </div>
+                <!-- Lettre de Motivation -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label">Lettre de Motivation</label>
+                        <span id="input-lettre" class="form-control form-control-alternative">lettre de motivation.pdf</span>
+                    </div>
+                </div>
+                
+                  <!-- Etudes -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Etudes</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.niveauEtudes }}</span>
+                    </div>
+                  </div>
+                  <!-- Diplôme -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Diplôme</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.titreDiplome }}</span>
+                    </div>
+                  </div>
+                  <!-- Université -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Université</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.universite }}</span>
+                    </div>
+                  </div>
+                  <!-- Experience -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Experience</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.experience }}</span>
+                    </div>
+                  </div>
+                  <!-- Etat de demande -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Etat de demande</label>
+                      <span id="input-cin" class="form-control form-control-alternative">{{ currentcandidat.etatdeDemandeCandidat }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Boutons Accepter / Refuser -->
+              <div class="row">
+                <div class="col-lg-6">
+                  <a class="btn btn-success"*ngIf="authService.isuser()==3 " (click)="accepterdemande(currentcandidat.id)">Accepter</a>
+                </div>
+                <div class="col-lg-6">
+                  <a class="btn btn-danger" *ngIf="authService.isuser()==3 "(click)="refuserdemande(currentcandidat.id)">Refuser</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

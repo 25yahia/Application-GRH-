@@ -1,0 +1,149 @@
+<!-- Header -->
+<div class="header bg-gradient-danger py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white">Bienvenue!</h1>
+          <p class="text-lead text-light">Merci d'avoir postulé chez MWS. Nous avons bien reçu votre candidature et nous vous contacterons prochainement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="row justify-content-center" style="min-height: 600px; background-size: cover; background-position: center top;">
+  <div class="container-fluid mt--7">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-body">
+            <form>
+              <h6 class="heading-small text-muted mb-4">Vos Données!</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <!-- Nom -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="nom">Nom</label>
+                      <input type="text" [(ngModel)]="NewCandidat.nomCandidat" id="nom" class="form-control form-control-alternative" name="nom">
+                    </div>
+                  </div>
+                  <!-- Prénom -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="prenom">Prénom</label>
+                      <input type="text" [(ngModel)]="NewCandidat.prenomCandidat" id="prenom" class="form-control form-control-alternative" name="prenom">
+                    </div>
+                  </div>
+                  <!-- Date de naissance -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="dateNaissance">Date de naissance</label>
+                      <input type="date" [(ngModel)]="NewCandidat.dateNaissanceCandidat" id="dateNaissance" class="form-control form-control-alternative" name="dateNaissance">
+                    </div>
+                  </div>
+                  <!-- Numéro de téléphone -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="telephone">Numéro de téléphone</label>
+                      <input type="tel" [(ngModel)]="NewCandidat.numeroTelephoneCandidat" id="telephone" class="form-control form-control-alternative" name="telephone">
+                    </div>
+                  </div>
+                  <!-- Email -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="email">Email</label>
+                      <input type="email" [(ngModel)]="NewCandidat.emailCandidat" id="email" class="form-control form-control-alternative" name="email">
+                    </div>
+                  </div>
+                  <!-- Adresse -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="adresse">Adresse</label>
+                      <input type="text" [(ngModel)]="NewCandidat.adresseCandidat" id="adresse" class="form-control form-control-alternative" name="adresse">
+                    </div>
+                  </div>
+                  <!-- CV -->
+                  <div class="form-group">
+                    <label for="cvFile">CV</label>
+                    <input type="file" (change)="selectFile($event, 'cvFile')" id="cvFile" class="form-control" name="cvFile">
+                  </div>
+                  <!-- Lettre de motivation -->
+                  <div class="form-group">
+                    <label for="lettreFile">Lettre de motivation</label>
+                    <input type="file" (change)="selectFile($event, 'lettreFile')" id="lettreFile" class="form-control" name="lettreFile">
+                  </div>
+                  <!-- Progress bars -->
+                  <div *ngIf="progress.cvFile > 0">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width.%]="progress.cvFile" aria-valuenow="{{ progress.cvFile }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ progress.cvFile }}%
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="progress.lettreFile > 0">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width.%]="progress.lettreFile" aria-valuenow="{{ progress.lettreFile }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ progress.lettreFile }}%
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Messages -->
+                  <div *ngIf="message.cvFile" class="alert alert-info">
+                    {{ message.cvFile }}
+                  </div>
+                  <div *ngIf="message.lettreFile" class="alert alert-info">
+                    {{ message.lettreFile }}
+                  </div>
+                  <!-- Niveau d'études -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="niveauEtudes">Niveau d'études</label>
+                      <input type="text" [(ngModel)]="NewCandidat.niveauEtudes" id="niveauEtudes" class="form-control form-control-alternative" name="niveauEtudes">
+                    </div>
+                  </div>
+                  <!-- Titre de diplôme -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="titreDiplome">Titre de votre diplôme</label>
+                      <input type="text" [(ngModel)]="NewCandidat.titreDiplome" id="titreDiplome" class="form-control form-control-alternative" name="titreDiplome">
+                    </div>
+                  </div>
+                  <!-- Université -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="universite">Université</label>
+                      <input type="text" [(ngModel)]="NewCandidat.universite" id="universite" class="form-control form-control-alternative" name="universite">
+                    </div>
+                  </div>
+                  <!-- Expérience -->
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="experience">Expérience</label>
+                      <input type="text" [(ngModel)]="NewCandidat.experience" id="experience" class="form-control form-control-alternative" name="experience">
+                    </div>
+                  </div>
+                  <!-- Confirmation message -->
+                  <div *ngIf="confirmationMessage" class="custom-alert" role="alert">
+                    {{ confirmationMessage }}
+                  </div>
+                  <!-- Bouton de dépôt -->
+                  <div class="col-lg-6">
+                    <button type="button" class="btn btn-danger" (click)="adddemande()">Déposer</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

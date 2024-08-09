@@ -1,0 +1,74 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <!-- Vos cartes avec les statistiques -->
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                  <span class="h2 font-weight-bold mb-0">{{totalTypecontrats}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-blue text-white rounded-circle shadow">
+                    <i class="fa fa-file-contract"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="col-xl-8 order-xl-1">
+    <div class="card bg-secondary shadow">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">Ajouter un type de Contrat:</h3>
+          </div>
+          <div class="col-4 text-right">
+            <a [routerLink]="['/consultertypecontrat']" class="btn btn-sm btn-primary">Retour</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form #typeContratForm="ngForm" (ngSubmit)="addtypecontrat()" novalidate>
+          <h6 class="heading-small text-muted mb-4">Information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Nom Type Contrat</label>
+                  <input type="text" [(ngModel)]="NewTypeContrat.nomContrat" name="nomContrat" class="form-control" required>
+                </div>
+              </div>
+             <!--  <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">ID Type Contrat</label>
+                  <input readonly type="text" [(ngModel)]="NewTypeContrat.id" name="idContrat" class="form-control">
+                </div>
+              </div> -->
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Description Type Contrat</label>
+                  <textarea [(ngModel)]="NewTypeContrat.descriptionContrat" name="descriptionContrat" class="form-control form-control-alternative" placeholder="Description du contrat" rows="4" required></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12 text-right">
+                <button type="submit" class="btn btn-success" [disabled]="!typeContratForm.form.valid">Ajouter</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

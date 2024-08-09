@@ -1,0 +1,176 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <!-- Vos cartes avec les statistiques -->
+
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                          <span *ngIf="authService.isuser()==2 "class="h2 font-weight-bold mb-0">{{totalDemandes}}</span>
+                          <span *ngIf="authService.isuser()==1 "class="h2 font-weight-bold mb-0">{{totalDemandesUser}}</span>
+                          <span *ngIf="authService.isuser()==3 "class="h2 font-weight-bold mb-0">{{totalDemandesUser}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                            <i class="fas fa-file-alt text-black"></i>
+                          </div>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">En Attente</h5>
+                          <span *ngIf="authService.isuser()==2 "class="h2 font-weight-bold mb-0">{{totalDemandesEnAttente}}</span>
+                          <span *ngIf="authService.isuser()==1 "class="h2 font-weight-bold mb-0">{{totalDemandesEnAttenteUser}}</span>
+                          <span *ngIf="authService.isuser()==3 "class="h2 font-weight-bold mb-0">{{totalDemandesEnAttenteUser}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                            <i class="fa fa-hourglass-half" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="container-fluid mt--7">
+          <div class="card bg-secondary shadow order-xl-1">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <h3 class="mb-0">Liste des Demandes :</h3>
+                </div>
+                <div class="col-3">
+                  <div class="input-group">
+                    <input type="text"     #searchTerm (keyup)="onKeyUp(searchTerm.value)" class="form-control" placeholder="Rechercher par ID" aria-label="Rechercher par ID">
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3 text-right" *ngIf="authService.isuser() == 1 || authService.isuser() == 3">
+                  <a [routerLink]="['/ajouterdemande']" class="btn btn-sm btn-primary">Ajouter</a>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-body"style="overflow-x: auto;" *ngIf="authService.isuser()==2">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Titre Demande</th>
+                    
+                    <th>Etat de demande</th>
+                    <th>nom Type Demande</th>
+                    <th>Nom utilisateur</th>
+                    <th>Prenom utilisateur</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let demande of demandes |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                    <td>{{demande.id}}</td>
+                    <td>{{demande.titreDemande}}</td>
+                    
+                    <td>{{demande.etatdeDemandeAdmin}}</td>
+                    <td>{{demande.typedemandeadministrative.nomDemande}}</td>
+                    <td>{{demande?.utilisateur.nom}}</td>
+                   <td>{{demande.utilisateur.prenom}}</td>
+                                       
+                   <td>
+                    <a class="btn btn-success" [routerLink]="['/detailsdemande',demande.id]">Plus Details</a>                    </td> 
+                  </tr>
+                </tbody>
+
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+            </div>
+
+
+            <div class="card-body"style="overflow-x: auto;" *ngIf="authService.isuser()==1">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    
+                    <th>Titre Demande</th>
+                    
+                    <th>Etat de demande Administrative</th>
+                    <th>nom Type Demande</th>
+                    
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let demande of demandes1 |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                  
+                    <td>{{demande.titreDemande}}</td>
+                    
+                    <td>{{demande.etatdeDemandeAdmin}}</td>
+                    <td>{{demande.typedemandeadministrative.nomDemande}}</td>
+                   
+                     <td>
+                      <a *ngIf="demande.etatdeDemandeAdmin=='en attente'" class="btn btn-danger" (click)="supprimerdemande(demande.id)">Supprimer</a>
+                      <a *ngIf="demande.etatdeDemandeAdmin=='en attente'" class="btn btn-success" [routerLink]="['/modifierdemande',demande.id]">Modifier</a>
+                      <a *ngIf="demande.etatdeDemandeAdmin=='etudié'" class="btn btn-success" [routerLink]="['/reponsedemande',demande.id]">Reponse</a>
+
+                    </td> 
+                  </tr>
+                </tbody>
+
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+            </div>
+
+            <div class="card-body"style="overflow-x: auto;" *ngIf="authService.isuser()==3">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    
+                    <th>Titre Demande</th>
+                    <th>Etat de demande Administrative</th>
+                    <th>nom Type Demande</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let demande of demandes1 |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                  
+                    <td>{{demande.titreDemande}}</td>
+                    <td>{{demande.etatdeDemandeAdmin}}</td>
+                    <td>{{demande.typedemandeadministrative.nomDemande}}</td>
+                    <td>
+                      <a *ngIf="demande.etatdeDemandeAdmin=='en attente'" class="btn btn-danger" (click)="supprimerdemande(demande.id)">Supprimer</a>
+                      <a *ngIf="demande.etatdeDemandeAdmin=='en attente'"class="btn btn-success" [routerLink]="['/modifierdemande',demande.id]">Modifier</a>
+                    </td> 
+                  </tr>
+                </tbody>
+
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+            </div>
+           
+          </div>
+        </div>

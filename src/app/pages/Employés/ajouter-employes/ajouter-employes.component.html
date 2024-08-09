@@ -1,0 +1,334 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <!-- Vos cartes avec les statistiques -->
+       
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalEmployes}}</span>
+
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                            <i class="fas fa-users"></i>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Archivés</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalEmployesArchiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                            <i class="fa fa-archive" aria-hidden="true"></i>
+
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Activés</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalEmployesActiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">RH</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalRhsActiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <i class="fas fa-user-tie"></i>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Responsable</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalResponsablesActiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <i class="fas fa-user-shield"></i>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="col-xl-8 order-xl-1">
+    <div class="card bg-secondary shadow">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">Ajouter un Employé:</h3>
+          </div>
+          <div class="col-4 text-right">
+            <a [routerLink]="['/consulteremployes']" class="btn btn-sm btn-primary">Retour</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form #departementForm="ngForm" (ngSubmit)="addemploye()" novalidate>
+          <h6 class="heading-small text-muted mb-4">Information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Nom</label>
+                  <input type="text" [(ngModel)]="NewEmploye.nom" name="nom" class="form-control"placeholder="Nom de l'employé" rows="4" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Prenom</label>
+                  <input type="text" [(ngModel)]="NewEmploye.prenom" name="prenom" class="form-control form-control-alternative"
+                    placeholder="Prénom de l'employé" rows="4" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Etat</label>
+                  <input type="text" [(ngModel)]="NewEmploye.etat" name="etat" class="form-control"placeholder="célibataire\Mariée " rows="4" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Adresse</label>
+                  <input type="text" [(ngModel)]="NewEmploye.adresse" name="adresse" class="form-control form-control-alternative"
+                    placeholder="123 Rue de la liberté Beb Saadoun" rows="4" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Ville</label>
+                  <input type="text" [(ngModel)]="NewEmploye.ville" name="ville" class="form-control form-control-alternative"
+                    placeholder="Tunis,Ben Arous,Ariana" rows="4" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Email</label>
+                  <input type="email" [(ngModel)]="NewEmploye.email" name="email" class="form-control form-control-alternative"
+                    placeholder="****@gmail.com" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Password</label>
+                  <div class="input-group">
+                    <input type="password" [(ngModel)]="NewEmploye.motdepasse" name="motdepasse" class="form-control form-control-alternative"
+                      placeholder="Password de l'employé" required #passwordField>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility(passwordField)">
+                        <i [ngClass]="{'fa-eye': !passwordField.type.includes('text'), 'fa-eye-slash': passwordField.type.includes('text')}" class="fas"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Repassword</label>
+                  <div class="input-group">
+                    <input type="password" [(ngModel)]="NewEmploye.repassword" name="repassword" class="form-control form-control-alternative"
+                      placeholder="Confirmer le password de l'employé" required #repasswordField>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility(repasswordField)">
+                        <i [ngClass]="{'fa-eye': repasswordField.type === 'password', 'fa-eye-slash': repasswordField.type === 'text'}" class="fas"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">UserName</label>
+                  <input type="text" [(ngModel)]="NewEmploye.userNName" name="userNName" class="form-control form-control-alternative"
+                    placeholder="UserName de l'employé" required>
+                </div>
+              </div>
+
+              <div class="col-sm-16 col-md-16 col-lg-16">
+                <label class="mb-2">Image :</label>
+                <input type="file" (change)="onImageUpload($event)" name="logo" class="form-control" required>
+              </div>
+
+              <div class="col-sm-16 col-md-16 col-lg-16">
+                <img [src]="imagePath" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px" />
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Salaire</label>
+                  <input type="number" [(ngModel)]="NewEmploye.salaire" name="salaire" class="form-control form-control-alternative"
+                    placeholder="Salaire de l'employé" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Solde</label>
+                  <input type="number" [(ngModel)]="NewEmploye.solde" name="solde" class="form-control form-control-alternative"
+                    placeholder="Solde de l'employé" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Jours de Congé</label>
+                  <input type="number" [(ngModel)]="NewEmploye.joursConge" name="joursConge" class="form-control form-control-alternative"
+                    placeholder="1.5 Jours chaque Mois" required>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Date de naissance</label>
+                  <input type="date" [(ngModel)]="NewEmploye.d" name="d" class="form-control form-control-alternative"
+                    placeholder="Date de naissance de l'employé" required>
+                </div>
+              </div>
+
+              
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Genre</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="genre" id="homme" [(ngModel)]="NewEmploye.genre"
+                      [value]="'Homme'" required>
+                    <label class="form-check-label" for="homme">Homme</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="genre" id="femme" [(ngModel)]="NewEmploye.genre"
+                      [value]="'Femme'" required>
+                    <label class="form-check-label" for="femme">Femme</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Archive</label>
+                  <input type="number" [(ngModel)]="NewEmploye.archive" name="archive" class="form-control form-control-alternative"
+                    placeholder="Archive de l'employé" required>
+                </div>
+              </div> -->
+
+              <!-- <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="form-control-label">Maladie</label>
+                  <input type="number" [(ngModel)]="NewEmploye.maladie" name="maladie" class="form-control form-control-alternative"
+                    placeholder="Maladie de l'employé" required>
+                </div>
+              </div> -->
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Date d'entrée</label>
+                  <input type="date" [(ngModel)]="NewEmploye.dateEntree" name="dateEntree" class="form-control form-control-alternative"
+                    placeholder="Date d'entrée de l'employé" required>
+                </div>
+              </div>
+
+              <div class="col-lg-9">
+                <div class="form-group">
+                  <label class="form-control-label">Cin</label>
+                  <input type="number" [(ngModel)]="NewEmploye.cin" name="cin" class="form-control form-control-alternative"
+                    placeholder="Cin de l'employé" required>
+                </div>
+              </div>
+
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <label>Type de Contrat</label>
+                <select class="form-control form-control-lg" id="typecontrat" name="typecontrat" [(ngModel)]="Newidtypecontrats" required>
+                  <option *ngFor="let typecontrat of typecontrats" [value]="typecontrat.id">
+                    {{ typecontrat.nomContrat }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <label>Departement</label>
+                <select class="form-control form-control-lg" id="departement" name="departement" [(ngModel)]="NewidDep" required>
+                  <option *ngFor="let departement of departements" [value]="departement.idDepartement">
+                    {{ departement.nomDepartement }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <label>Role</label>
+                <select class="form-control form-control-lg" id="role" name="role" [(ngModel)]="NewidRole" required>
+                  <option *ngFor="let role of roles" [value]="role.idRole">
+                    {{ role.nomRole }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-lg-12 text-right">
+                <button type="submit" class="btn btn-success" [disabled]="!departementForm.form.valid">Ajouter</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

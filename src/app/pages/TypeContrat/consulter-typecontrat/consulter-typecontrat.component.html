@@ -1,0 +1,86 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <!-- Vos cartes avec les statistiques -->
+
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                  <span class="h2 font-weight-bold mb-0">{{totalTypecontrats}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-blue text-white rounded-circle shadow">
+                    <i class="fa fa-file-contract"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="container-fluid mt--7">
+  <div class="card bg-secondary shadow order-xl-1">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-6">
+          <h3 class="mb-0">Liste des types de contrat :</h3>
+        </div>
+        <div class="col-3">
+          <div class="input-group">
+            <input type="text" #searchTerm (keyup)="onKeyUp(searchTerm.value)" class="form-control"
+              placeholder="Rechercher par nom" aria-label="Rechercher par nom">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 text-right">
+          <a [routerLink]="['/ajoutertypecontrat']" class="btn btn-sm btn-primary">Ajouter</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id Type Contrat</th>
+            <th>Nom Type Contrat</th>
+            <th>Description Type Contrat</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let typecontrat of typecontrats|paginate: { itemsPerPage: 4, currentPage: p }">
+          <tr>
+            <td>{{typecontrat.id}}</td>
+            <td>{{typecontrat.nomContrat}}</td>
+            <td>{{typecontrat.descriptionContrat}}</td>
+            <td>
+              <a class="btn btn-danger" (click)="supprimertypecontrat(typecontrat.id)">Supprimer</a>
+              <a class="btn btn-success" [routerLink]="['/modifiertypecontrat',typecontrat.id]">Modifier</a>
+            </td>
+          </tr>
+        </tbody>
+      </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+    </div>
+      
+  </div>
+</div>

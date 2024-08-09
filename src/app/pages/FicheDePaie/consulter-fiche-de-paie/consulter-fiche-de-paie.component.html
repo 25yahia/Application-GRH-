@@ -1,0 +1,103 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <!-- Vos cartes avec les statistiques -->
+
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalFicheDePaies}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-white text-white rounded-circle shadow">
+                            <i class="fas fa-file-invoice-dollar text-green"></i>
+
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+
+             
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="container-fluid mt--7">
+          <div class="card bg-secondary shadow order-xl-1">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <h3 class="mb-0">Liste des Fiches de paie :</h3>
+                </div>
+                <div class="col-3">
+                  <div class="input-group">
+                   <input type="text" #searchTerm (keyup)="onKeyUp(searchTerm.value)" class="form-control" placeholder="Rechercher par id" aria-label="Rechercher par id"> 
+
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3 text-right">
+                  <a [routerLink]="['/ajouterfichedepaie']" class="btn btn-sm btn-primary">Ajouter</a>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nom Entreprise</th>
+                    
+                    <th>Nom Employé</th>
+                    <th>Début période</th>
+                    <th>Fin période</th>
+                    <th>Date paiement</th>
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let Fichedepaie of FicheDePaies|paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                    <td>{{Fichedepaie.id}}</td>
+                    <td>{{Fichedepaie.nomEntreprise}}</td>
+                    
+                    <td>{{Fichedepaie.nomEmploye}}</td>
+                    <td>{{Fichedepaie.debutPeriodePaie}}</td>
+                    <td>{{Fichedepaie.finPeriodePaie}}</td>
+                    <td>{{Fichedepaie.datePaiement}}</td>
+
+                    <td>
+                     <!--  <a class="btn btn-danger" (click)="supprimerconge(conge.id)">Supprimer</a> -->
+                      <!-- <a class="btn btn-success" [routerLink]="['/modifiercongé',conge.id]">Modifier</a> -->
+                      <a class="btn btn-success" [routerLink]="['/detailsfichedepaie',Fichedepaie.id]">Plus de détails</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+
+
+            </div>
+          </div>
+        </div>
+
+	

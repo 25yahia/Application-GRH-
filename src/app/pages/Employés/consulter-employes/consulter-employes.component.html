@@ -1,0 +1,278 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <!-- Vos cartes avec les statistiques -->
+       
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalEmployes}}</span>
+
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                            <i class="fas fa-users"></i>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Archivés</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalEmployesArchiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                            <i class="fa fa-archive" aria-hidden="true"></i>
+
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Activés</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalEmployesActiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">RH</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalRhsActiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <i class="fas fa-user-tie"></i>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Responsable</h5>
+                          <span class="h2 font-weight-bold mb-0">{{totalResponsablesActiver}}</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <i class="fas fa-user-shield"></i>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+
+       
+
+
+
+
+        <div class="container-fluid mt--7">
+          <div class="card bg-secondary shadow order-xl-1">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <h3 class="mb-0">Liste des employés :</h3>
+                </div>
+                <div class="col-3">
+                  <div class="input-group">
+                     <input type="text"     #searchTerm (keyup)="onKeyUp(searchTerm.value)" class="form-control" placeholder="Rechercher par ID" aria-label="Rechercher par ID"> 
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3 text-right" *ngIf="authService.isuser()==2">
+                  <a [routerLink]="['/ajouteremployes']" class="btn btn-sm btn-primary">Ajouter</a>
+                  <a  [routerLink]="['/listearchives']"class ="btn btn-sm btn-primary">Liste Employés Archivés</a>
+                    <!-- (click)="getEmployeArchive()">Afficher les employés archivés -->
+                </div>
+              </div>
+
+            </div>
+            <div class="card-body"style="overflow-x: auto;"*ngIf="authService.isuser()==2">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Id</th>
+                   <!--  <th>Etat</th> -->
+                    <th>Nom </th>
+                    <th>prenom</th>
+                    <!-- <th>Adresse </th> -->
+                    <!-- <th>mot de passe</th> -->
+                    <!-- <th>email</th> -->
+                    <!-- <th>image</th> -->
+                     <!-- <th>salaire</th> -->
+                     <!-- <th>solde</th -->
+                     <!-- <th>ville</th> -->
+                    <!--  <th>joursConge</th> -->
+                     <!-- <th>statut</th> -->
+                     <!-- <th>d</th> -->
+                    <!--  <th>Repassword</th> -->
+                     <!-- <th>genre</th> -->
+                   <!--   <th>archive</th> -->
+                     <!-- <th>maladie</th> -->
+                    <!-- <th>date Entrée</th> -->
+                    <!-- <th>Cin</th> -->
+                    <th>Nom rôle</th> 
+                    <th>Nom Departement</th>
+                    <!-- <th>Nom Contrat</th> -->
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let employe of employes |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                    <td><img class="card-img-top img-responsive" src="{{apiURL1+'/image/loadfromFS/'+employe.id}}"
+                      style = "height :50px;width:100px">
+</td>
+                    <td>{{employe.id}}</td>
+                    <!-- <td>{{employe.etat}}</td> -->
+                    <td>{{employe.nom}}</td>
+                    <td>{{employe.prenom}}</td>
+                   <!--  <td>{{employe.adresse}}</td> -->
+                   <!--  <td>{{employe.motdepasse}}</td> -->
+                    <!-- <td>{{employe.email}}</td> -->
+                    <!-- <td>{{employe.image}}</td> -->
+                    <!-- <td>{{employe.salaire}}</td> -->
+                   <!--  <td>{{employe.solde}}</td> -->
+                    <!-- <td>{{employe.ville}}</td>
+                    <td>{{employe.joursConge}}</td> -->
+                    <!-- <td>{{employe.statut}}</td> -->
+                   <!--  <td>{{employe.d}}</td>
+                    <td>{{employe.repassword}}</td> -->
+                    <!-- <td>{{employe.genre}}</td> -->
+                    <!--  <td>{{employe.archive}}</td>
+                    <td>{{employe.maladie}}</td>
+                    <td>{{employe.dateEntree}}</td>
+                    <td>{{employe.cin}}</td> -->
+                    <td>{{employe.role.nomRole}}</td> 
+                    <td>{{employe.departement.nomDepartement}}</td>
+                     <!-- <td>{{employe.contrat.typeContrat.nomContrat}}</td> -->
+                    <td>
+                      <a class="btn btn-danger" (click)="archiverEmploye(employe.id)">Archiver</a>
+                      <a class="btn btn-success" [routerLink]="['/detailsemploye',employe.id]">Plus de détails</a>
+                      <!-- <a class="btn btn-success" [routerLink]="['/modifier-role',role.idRole]">Modifier</a> -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+            </div>
+
+            <div class="card-body"style="overflow-x: auto;"*ngIf="authService.isuser()==3  ">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Id</th>
+                   <!--  <th>Etat</th> -->
+                    <th>Nom </th>
+                    <th>prenom</th>
+                    <!-- <th>Adresse </th> -->
+                    <!-- <th>mot de passe</th> -->
+                    <!-- <th>email</th> -->
+                    <!-- <th>image</th> -->
+                     <!-- <th>salaire</th> -->
+                     <!-- <th>solde</th -->
+                     <!-- <th>ville</th> -->
+                    <!--  <th>joursConge</th> -->
+                     <!-- <th>statut</th> -->
+                     <!-- <th>d</th> -->
+                    <!--  <th>Repassword</th> -->
+                     <!-- <th>genre</th>
+                      <th>archive</th> 
+                     <th>maladie</th> 
+                     <th>date Entrée</th> 
+                     <th>Cin</th> --> 
+                     <th>Nom rôle</th> 
+                     <th>Nom Departement</th>
+                    <!-- <th>Nom Contrat</th> -->
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let employe of employes |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                    <td><img class="card-img-top img-responsive" src="{{apiURL1+'/image/loadfromFS/'+employe.id}}"
+                      style = "height :50px;width:100px">
+</td>
+                    <td>{{employe.id}}</td>
+                    <!-- <td>{{employe.etat}}</td> -->
+                    <td>{{employe.nom}}</td>
+                    <td>{{employe.prenom}}</td>
+                   <!--  <td>{{employe.adresse}}</td> -->
+                   <!--  <td>{{employe.motdepasse}}</td> -->
+                    <!-- <td>{{employe.email}}</td> -->
+                    <!-- <td>{{employe.image}}</td> -->
+                    <!-- <td>{{employe.salaire}}</td> -->
+                   <!--  <td>{{employe.solde}}</td> -->
+                    <!-- <td>{{employe.ville}}</td>
+                    <td>{{employe.joursConge}}</td> -->
+                    <!-- <td>{{employe.statut}}</td> -->
+                   <!--  <td>{{employe.d}}</td>
+                    <td>{{employe.repassword}}</td> -->
+                   <!--  <td>{{employe.genre}}</td>
+                    <td>{{employe.archive}}</td>
+                    <td>{{employe.maladie}}</td>
+                    <td>{{employe.dateEntree}}</td>
+                    <td>{{employe.cin}}</td> -->
+                    <td>{{employe.role.nomRole}}</td>
+                    <td>{{employe.departement.nomDepartement}}</td>
+                     <!-- <td>{{employe.contrat.typeContrat.nomContrat}}</td> -->
+                    <td>
+                      
+                      <a class="btn btn-success" [routerLink]="['/detailsemploye',employe.id]">Plus de détails</a>
+                      <!-- <a class="btn btn-success" [routerLink]="['/modifier-role',role.idRole]">Modifier</a> -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>  <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+            </div>
+           
+          </div>
+        </div>
+
+

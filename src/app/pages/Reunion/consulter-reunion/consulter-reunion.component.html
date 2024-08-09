@@ -1,0 +1,125 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row">
+          <!-- Vos cartes avec les statistiques -->
+  
+                  <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                            <span class="h2 font-weight-bold mb-0">{{totalreunions}}</span>
+                          </div>
+                          <div class="col-auto">
+                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                              <i class="fa fa-calendar-check"></i> 
+                          </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+  
+                 
+                 
+                </div>
+              </div>
+            </div>
+  
+          </div>
+  
+  
+  
+  
+  
+  
+          <div class="container-fluid mt--7">
+            <div class="card bg-secondary shadow order-xl-1">
+              <div class="card-header bg-white border-0">
+                <div class="row align-items-center">
+                  <div class="col-6">
+                    <h3 class="mb-0">Liste des réunions :</h3>
+                  </div>
+                   <div class="col-3">
+                    <div class="input-group">
+                      <input type="text"     #searchTerm (keyup)="onKeyUp(searchTerm.value)" class="form-control" placeholder="Rechercher par Date Reunion" aria-label="Rechercher par nom">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="fas fa-search"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="col-3 text-right">
+                    <a *ngIf="authService.isuser()==3" [routerLink]="['/ajouterreunion']" class="btn btn-sm btn-primary">Ajouter</a>
+                    </div>
+                  </div>
+  
+              </div>
+              <div class="card-body"*ngIf="authService.isuser()==3">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Titre réunion</th>
+                      <th>Type réunion</th>
+                      <th>Date réunion</th>
+                      <th>Heure réunion</th>
+                      <th>Département</th>
+  
+                       <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let reunion of reunions">
+                    <tr>
+                      <td>{{reunion.id}}</td>
+                      <td>{{reunion.titreReunion}}</td>
+                      <td>{{reunion.typeReunion.nomTypeReunion}}</td>
+                      <td>{{reunion.dateReunion}}</td>
+                      <td>{{reunion.heureReunion}}</td>
+                     <td>{{reunion.departement.nomDepartement}}</td>
+  
+                      <td>
+                        <a class="btn btn-danger" (click)="supprimerreunion(reunion.id)">Supprimer</a>
+                        <a  class="btn btn-success" [routerLink]="['/modifierreunion',reunion.id]">Modifier</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table> 
+
+              </div>
+              <div class="card-body"*ngIf="authService.isuser()==1">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Titre réunion</th>
+                      <th>Type réunion</th>
+                      <th>Date réunion</th>
+                      <th>Heure réunion</th>
+                      <th>Département</th>
+  
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let reunion of reunions1">
+                    <tr>
+                      <td>{{reunion.id}}</td>
+                      <td>{{reunion.titreReunion}}</td>
+                      <td>{{reunion.typeReunion.nomTypeReunion}}</td>
+                      <td>{{reunion.dateReunion}}</td>
+                      <td>{{reunion.heureReunion}}</td>
+                     <td>{{reunion.departement.nomDepartement}}</td>
+  
+                      
+                    </tr>
+                  </tbody>
+                </table> 
+
+              </div>
+             
+            </div>
+          </div>

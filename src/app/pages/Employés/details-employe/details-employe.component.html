@@ -1,0 +1,204 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+   style="min-height: 600px; background-size: cover; background-position: center top; background-image: url(assets/img/theme/profile-cover.jpg);">
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row" *ngIf="currentemploye.email">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">{{currentemploye.prenom}}</h1>
+        <p class="text-white mt-0 mb-5">{{ currentemploye.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="{{apiURL1+'/image/loadfromFS/'+currentemploye.id}}" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"></div>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5"></div>
+            </div>
+          </div>
+          <div class="text-center">
+            <h3>
+              {{currentemploye.nom}} {{currentemploye.prenom}}<span class="font-weight-light">, 27</span>
+            </h3>
+            <div class="h5 font-weight-300">
+              <i class="ni location_pin mr-2"></i>{{currentemploye.ville}}
+            </div>
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>{{currentemploye.role.nomRole}}
+            </div>
+            <div>
+              <i class="ni education_hat mr-2"></i>{{ currentemploye.departement.nomDepartement }}
+            </div>
+            <hr class="my-4" />
+            <a href="javascript:void(0)">Connecté(e)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Mon compte</h3>
+            </div>
+            <div class="col-4 text-right">
+              <a [routerLink]="['/consulteremployes']" class="btn btn-sm btn-primary">Retour</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4"> Informations</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Id</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.id }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Nom</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.nom }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Prenom</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.prenom }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">UserName</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.userNName }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Email</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.email }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Etat</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.etat }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Salaire</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.salaire }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Solde</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.solde }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Ville</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.ville }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Jours de Congé</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.joursConge }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Date</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.d }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Archive</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.archive }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Maladie</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.maladie }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Date d'entrée</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.dateEntree }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Rôle</label>
+                    <span id="input-role" class="form-control form-control-alternative">{{ currentemploye.role.nomRole }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Département</label>
+                    <span id="input-departement" class="form-control form-control-alternative">{{ currentemploye.departement.nomDepartement }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Type Contrat</label>
+                    <span id="input-contrat" class="form-control form-control-alternative">{{ currentemploye.typeContrat?.nomContrat }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4" />
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Adresse</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.adresse }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Ville</label>
+                    <span id="input-cin" class="form-control form-control-alternative">{{ currentemploye.ville }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <hr class="my-4" />
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

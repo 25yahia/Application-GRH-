@@ -1,0 +1,231 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Nombre Total</h5>
+                  <span *ngIf="authService.isuser()==2 "class="h2 font-weight-bold mb-0">{{totalConges}}</span>
+                  <span *ngIf="authService.isuser()==1 "class="h2 font-weight-bold mb-0">{{totalCongeUser}}</span>
+                  <span *ngIf="authService.isuser()==3 "class="h2 font-weight-bold mb-0">{{totalConges}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                    <i class="fa fa-suitcase-rolling "></i>
+
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Depuis La semaine derniére</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0"> En Attente</h5>
+                  <span *ngIf="authService.isuser() == 2" class="h2 font-weight-bold mb-0">{{ totalCongeEnAttente }}</span>
+                  <span *ngIf="authService.isuser() == 1" class="h2 font-weight-bold mb-0">{{ totalCongeEnAttenteUser }}</span>
+                  <span *ngIf="authService.isuser() == 3" class="h2 font-weight-bold mb-0">{{ totalCongeEnAttente }}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fa fa-hourglass-half" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.08%</span>
+                <span class="text-nowrap">taux de congés en attente</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0"> Acceptés</h5>
+                  <span *ngIf="authService.isuser()==2 "class="h2 font-weight-bold mb-0">{{totalCongeAccepter}}</span>
+                  <span *ngIf="authService.isuser()==1 "class="h2 font-weight-bold mb-0">{{totalCongeAccepterUser}}</span>
+                  <span *ngIf="authService.isuser()==3 "class="h2 font-weight-bold mb-0">{{totalCongeAccepter}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 71.8%</span>
+                <span class="text-nowrap">Taux d'acceptation</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0"> Refusés</h5>
+                  <span *ngIf="authService.isuser()==2 "class="h2 font-weight-bold mb-0">{{totalCongeRefuser}}</span>
+                  <span *ngIf="authService.isuser()==1 "class="h2 font-weight-bold mb-0">{{totalCongeRefuserUser}}</span>
+                  <span *ngIf="authService.isuser()==3 "class="h2 font-weight-bold mb-0">{{totalCongeRefuser}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 28.2%</span>
+                <span class="text-nowrap">Taux de Refus</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+        <div class="container-fluid mt--7">
+          <div class="card bg-secondary shadow order-xl-1">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-6">
+                  <h3 class="mb-0">Liste des Congés :</h3>
+                </div>
+                <div class="col-3">
+                  <div class="input-group">
+                    <input type="text"     #searchTerm (keyup)="onKeyUp(searchTerm.value)" class="form-control" placeholder="Rechercher par id" aria-label="Rechercher par id">
+
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3 text-right" *ngIf="authService.isuser()==1 ">
+                  <a [routerLink]="['/ajoutercongé']" class="btn btn-sm btn-primary">Ajouter</a>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-body"style="overflow-x: auto;" *ngIf="authService.isuser()==2 ">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Durée du Congé</th>
+                    <th>État de demande du congé</th>
+                    <th>Type de conge</th>
+                    <th>Nom utilisateur</th>
+                    <th>Prenom utilisateur</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let conge of conges |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                    <td>{{conge.id}}</td>
+                    <td>{{conge.duree}}</td>
+                    <td>{{conge.etatdedemande}}</td>
+                    <td>{{conge.typedeConge.nomConge}}</td>
+                    <td>{{conge.utilisateur.nom}}</td>
+                    <td>{{conge.utilisateur.prenom}}</td>
+                    <td>
+                      <a class="btn btn-success" [routerLink]="['/detailsconge',conge.id]">Plus Details</a>
+             
+                    </td>
+                  </tr>
+                </tbody>
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+
+
+            </div>
+
+            <div class="card-body"style="overflow-x: auto;" *ngIf="authService.isuser()==1 ">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                   
+                    <th>Durée du CongéG</th>
+                    <th>État de demande du congé</th>
+                    <th>Début du congé</th>
+                    <th>Fin du congé</th>
+                    <th>Description du congé</th>
+                    <th>Type de conge</th>
+                  
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let conge of conges1 |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                   
+                    <td>{{conge.duree}}</td>
+                    <td>{{conge.etatdedemande}}</td>
+                    <td>{{conge.debutconge}}</td>
+                    <td>{{conge.finConge}}</td>
+                    <td>{{conge.descriptionconge}}</td>
+                    <td>{{conge?.typedeConge?.nomConge}}</td>
+                   
+                    <td>
+                      <a *ngIf="conge.etatdedemande=='en attente'"class="btn btn-danger" (click)="supprimerconge(conge.id)">Supprimer</a>
+                      <a  *ngIf="conge.etatdedemande=='en attente'"class="btn btn-success" [routerLink]="['/modifiercongé',conge.id]">Modifier</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+
+
+            </div>
+            <div class="card-body"style="overflow-x: auto;" *ngIf="authService.isuser()==3 ">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Durée du Congé</th>
+                    <th>État de demande du congé</th>
+                    <th>Type de conge</th>
+                    <th>Nom utilisateur</th>
+                    <th>Prenom utilisateur</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let conge of conges |paginate: { itemsPerPage: 4, currentPage: p }">
+                  <tr>
+                    <td>{{conge.id}}</td>
+                    <td>{{conge.duree}}</td>
+                    <td>{{conge.etatdedemande}}</td>
+                    <td>{{conge.typedeConge.nomConge}}</td>
+                    <td>{{conge.utilisateur.nom}}</td>
+                    <td>{{conge.utilisateur.prenom}}</td>
+                    <td>
+                      <a class="btn btn-success" [routerLink]="['/detailsconge',conge.id]">Plus Details</a>
+             
+                    </td>
+                  </tr>
+                </tbody>
+              </table> <div class="pagination"> <pagination-controls (pageChange)="p=$event"></pagination-controls></div>
+
+
+            </div>
+          </div>
+        </div>

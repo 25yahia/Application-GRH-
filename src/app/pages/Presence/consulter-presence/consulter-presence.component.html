@@ -1,0 +1,29 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="text-white">{{ currentDate }}</h2>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="text-white">Employés</label>
+                        <select class="form-control form-control-lg" id="id" name="id" required>
+                            <option>Mrabti Meriem</option>
+                            <option>Maryem Ben Abdallah</option>
+                            <option>Ben Ali Akrem</option>
+                            <option>Bourehla Selim</option>
+                            <option>Ben Ahmed Firas</option>
+                            <option>Mhiri Nejla</option>
+                            <option>Ben Salha Amira</option>
+                            <option>Hammami Zied</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<full-calendar [options]="calendarOptions"></full-calendar>
